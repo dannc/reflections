@@ -1,0 +1,15 @@
+What happens when you initialize a repository?  Why do you need to do it?
+
+- git creates its own status .git directory to identify itself as a git repo
+- It is needed so that git can track changes and hold configuration regarding the repo.
+
+How is the staging area different from the working directory and the repository?  What value
+do you think it offers?
+
+- The working directory contains some set of files.  Some files may not ever be added to the repository
+- The repository contains only those files in the working directory that have been commited to the repo.
+- The staging area contains changes (adds, removes, updates) that are "in progress" but that haven't yet
+been commited to the repo
+- This allows you to make changes and then later decide to commit those changes to the repo when I
+think I have a group of files that are ready for submission to the repo.
+
