@@ -1,0 +1,57 @@
+The -u option to diff makes understanding the diff 2000% easier!
+
+I can finally use diff and not be befuddled!
+
+Version control allows you to see history of doc/changes.
+
+Drop Box and Google Docs keep previous versions.
+
+Git commits are user-created checkpoints
+Commits require commit messages (what changed)
+
+Concept Map:
+
+  blue arrow is "type-of"   (git is type of VCS)
+  green arrow is "part-of"  (commits are part of git)
+  black arros is "operates on"  (git diff operates on commits)
+
+Git commit ids are an identifier uniquely identifying a commit.
+
+git log shows logs of changes
+
+git diff shows the actual changes
+
+What do you think the pros and cons of manually choosing when to create a commit, like you do in
+Gis, vs having versios automatically saved, like Google Docs does?
+
+- Pros
+  * Allows you to choose when to save a logically related set of changes.
+  * You don't have commits that are partially complete (and my not compile)
+  * Allows you to choose how much change you want to save and when
+- Cons
+  * If you forget (or are lazy), you can get (too many) unrelated changes
+  * You don't have auto-magic commit points should your system crash - (though file save should take care of this)
+
+Commits can be thought of a snapshot of every file in a repository at a specific point.
+
+git log --stat shows (for each included commit) which files were changed and the number of adds/removes to each file
+
+Why do you think some version control systems, like Git, allow saving multiple files in one commit, while others, like
+Google Docs, treat each file separately?
+
+- This is because each has a differencent audience.  Google Docs are usually self-contained documents which do not have
+inter-related changes with other docs and the audience mainly wants automated backups so they don't loose any unsaved
+changes.  Git users are generally tracking software code (or such) that contains logical updates to features that span
+multiple files.
+
+How can yo use the commands git log and git diff to view the history of files?
+
+- 'git log' shows the history of all the commits in the repository
+- 'git log <file>' shows the history of all commits that modified a specific file
+- 'git diff' will show you what changed in a particular commit.
+
+How might using version control make you more confident to make changes that could break something?
+
+- It offers the ability to go back to previous versions to find where a bug was introduced (and subsequently fix it)
+- It allows you to try wide-scale changes while having the safety to revert to previous versions
+
