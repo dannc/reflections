@@ -1,3 +1,5 @@
+Working directory/Staging Area/Repository:
+
 What happens when you initialize a repository?  Why do you need to do it?
 
 - git creates its own status .git directory to identify itself as a git repo
@@ -12,4 +14,66 @@ do you think it offers?
 been commited to the repo
 - This allows you to make changes and then later decide to commit those changes to the repo when I
 think I have a group of files that are ready for submission to the repo.
+
+How can you use the staging area to make sure you have on commit per logical change?
+
+- You can add a logical change worth of files to the staging area (assuming that unrelated changes
+are not contained within the same files).  Then you can commit what's in the staging area.  Subsequently
+you can then stage additional work to the staging area and then commit it separately.
+
+
+Branches:
+
+* Branches in git are "labels" for commits (so you don't have to remember commit ids).  The lineages of commits on branches
+are distinct from the lineage of commits on the "master" branch (as you would expect).
+* To change to a branch, you simply "git checkout <branch name>"
+* The last commit on a branch is known as "the tip."
+* The process of combining work from two branches is a merge (duh)
+* Each commit has a parent.
+* git log show a lineage of parents from that commit until it reaches the first commit
+* If you checked out an earlier commit, then create a new commit from there, and then switched back to HEAD, that new
+commit would be "unreachabe" when viewing in git log.  You could only get back to it if you knew its commit id.
+What are some situations when branches would be helpful in keeping your history orgainized?  How would branches help?
+
+ - Branches might be helpful for:
+    - Experimental features/code refactoring
+    - Bug fixing for more complex bugs or where you need to context switch
+    - Creating versions of code that are distinct and may stay that way
+    - Creating "release" versions that may need to have bugfixes applied later on.
+    - Sharing early features/refactoring with others.
+    - Allows others to work on new features/bug-fixes.
+
+ - Branches facilitate this by allowing you to commit new pieces of logical work within the branch without effecting the
+main line of develpment.
+
+How do the diagrams help you visualize the branch structure?
+
+ - It shows where branches diverge from their parent branches and also what has changed in other branches
+that your current branch doesn't reflect/contain.
+
+Merging branches
+
+ * Merging needs to know about not only the latest commit of both branches, but also the common ancestor of the branches so that
+one could know whether lines were added or removed by each branch.
+ * Merged branch commit has two parents (the latest commit for each branch that was merged)
+ * Deleting a branch removes its label.  Effectively this means that they are unreachable without knowing its latest
+commit id.
+ * Deleting the branch before merging effectively "abandons" the branch - meaning that it doesn't get reflected in the new master
+ * Deleting the branch after a merge would still show the branches commits in the git log.  (Commits from the master and merged branch
+will be interleaved based on the time of the commits.
+
+What is the result of merging two branches together?  Why do we represent it in the diagram the way we do?
+
+ - Merging two branches together brings changes from one branch to another so the branch being merged into has all of the changes from
+the other branch.  It is represented in the diagram this way because the merge commit has two parents.
+
+What are the pros and cons of Git's automatic merging vs. always doing the merges manually?
+
+ - Pros
+   - Manually merging everything would be tedious!
+   - Manually merging could also be error-prone compared to gits ability to understand what can be (relatively) safely added
+
+ - Cons
+   - Auto-merging doesn't ensure that the combined result is correct!
+   - Auto-merge might bring in a function that relies on a specific variable value, and that variable value changes in the merge (for example)
 
