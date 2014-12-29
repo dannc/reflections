@@ -6,3 +6,79 @@ When would you want to use a remote repository rather than keeping all your work
  - When you often work from different computers/locations.
  - When you desire a location to back up your work.
  - When you want feedback from others on work you've done.
+
+Why might you want to always pull changes manually rather than having Git automatically stay up-to-date
+with your remote repository?
+
+ - You are not always online when working on your local repo - so automatic updates may not be feasible
+ - You may be in the process of completely refactoring your work.  In this case, automatically updating when
+you are not finished could produce confusing results
+ - You might not want to share work in progress with your remote (as others might download and think it is finished)
+
+Forking
+
+* This is essentially cloning a repo on GitHub to a new repo on, which keeps info on GitHub about who's cloned the
+original repo and has links from the forked repo back to the original.
+
+Describe the differences between forks, clones, and branches.  When would you use one instead of the other.
+
+Branches:
+ - Branches create a new HEAD on an existing repository.
+ - This is useful if you want to make new features, experiment with refactoring, etc for an existing project.
+
+Clones:
+ - Clones are where you make a copy of an existing repo.
+ - This is useful if you need to edit and possibly contribute to an existing project or to download a project to
+a new computer.
+
+Forkes:
+ - Essentially clones within github that preserve knowledge of the original repo
+ - This is useful if you want to be able to modify an existing project to fit your needs but don't want to change the
+original projects contents.  Also, it gives credit (via link) on GitHub about where the original work came from.
+
+fetch vs pull
+
+ * Fetch pulls in a new copy of origin/master (or other branch) - which looks in the commit history like a new branch.
+  To reconcile, you must
+merge this into your local master/branch.
+ * Pull pulls in the new copy of origin/master (or other branch) - and then merges it your local master/branch.
+  It essentially does a fetch followed by a merge for you (though you still need to resolve any conflicts)
+
+Fast-forward Merges:
+
+  * This occurs when you do a git fetch (or maybe pull --rebase) as well as when your head is "reachable" (is in the ancestry of)
+the commits you are merging in.
+
+What is the benefit of having a copy of the last known state of the remote stored locally?
+
+ - This allows you to bring in bugfixes and to make sure that underlying assumptions about how the project is structured validated
+before your ready to merge your work back into the mainline work.
+
+Pull Requests:
+
+* This is a way to get feedback on changes that you'd like reviewed before committing back to the master branch.
+*  You create a branch and add your changes
+*  You push your changes to the remote orgin <branch> (not master!)
+*  On GitHub, you select your branch and then click the pull-request button (and edit to make sure the correct fork/master is used as
+the target of the merge).
+*  Then another developer can review the proposed changes.  If they are OK, then they can use the "Merge Pull Request" to merge (or maybe
+the original developer does?)
+*  If something needs to be fixed, the other developer can add comments to the pull request (either line-by-line or for the whole commit),
+which makes it like a code review!
+
+
+How would you collaborate without using Git or GitHub?  What would be easier, and what would be harder?
+
+ - I would use mercurial and a code review tool (that or generate diff patches that other developers could merge into their local repos
+ to view the changes).  It would be easier on Hg to do "patch queues" rather than git's branching though then the collaboration using a
+third-party code collaborator tool would be more "klunky."
+
+When would you want to make changes in a separate branch rather than directly in master?  What benefits does each approach have?
+
+ - Working in a separate branch allows you to develop new features (with their own continuous integration builds) alongside of mainline
+development.
+ - Working in a separate branch also allows one to do major refactoring or also to make changes in which you want collaborative reviews of
+the work before merging it back into mainline code.
+ - Working in a master branch is good for when you want to make small bugfixes for which collaboration isn't required.  It also simplifies
+the process by not having to keep track of multiple branches.
+
